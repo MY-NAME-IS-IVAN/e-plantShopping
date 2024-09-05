@@ -370,10 +370,14 @@ function ProductList() {
                         <p>{plant.description}</p>
                         <button
                           className={`product-button ${
-                            addedToCart[plant.name] ? 'added-to-cart' : ''
+                            cart.find((item) => item.name === plant.name)
+                              ? 'added-to-cart'
+                              : ''
                           }`}
                           onClick={() => handleAddToCart(plant)}
-                          disabled={addedToCart[plant.name]}
+                          disabled={cart.find(
+                            (item) => item.name === plant.name
+                          )}
                         >
                           Add to Cart
                         </button>
